@@ -5,6 +5,7 @@ import { OrderComponent } from './order/order.component';
 import { DailySpecialsComponent } from './daily-specials/daily-specials.component';
 import { FeedbackComponent } from './feedback/feedback.component';
 import { SigninComponent } from './signin/signin.component';
+import { FeaturedTacosComponent } from './featured-tacos/featured-tacos.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
@@ -30,6 +31,10 @@ export const routes: Routes = [
     component: DailySpecialsComponent
   },
   {
+    path: 'featured-tacos',
+    component: FeaturedTacosComponent
+  },
+  {
     path: 'feedback',
     component: FeedbackComponent
   },
@@ -38,3 +43,4 @@ export const routes: Routes = [
     component: SigninComponent
   }
 ];
+

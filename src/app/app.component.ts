@@ -29,9 +29,11 @@ import { AuthService } from './auth.service';
             <li><a routerLink="/menu">Menu</a></li>
             <li><a routerLink="/order">Order</a></li>
             <li><a routerLink="/daily-specials">Daily Specials</a></li>
+            <li><a routerLink="/featured-tacos">Featured Tacos</a></li>
             <li><a routerLink="/feedback">Feedback</a></li>
           </ul>
         </nav>
+
         <section class="content">
           <router-outlet />
         </section>
@@ -43,8 +45,10 @@ import { AuthService } from './auth.service';
           <a routerLink="/menu">Menu</a> |
           <a routerLink="/order">Order</a> |
           <a routerLink="/daily-specials">Daily Specials</a> |
+          <a routerLink="/featured-tacos">Featured Tacos</a> |
           <a routerLink="/feedback">Feedback</a>
         </nav>
+
         <p>&copy; 2024 Virtual Taco Stand</p>
       </footer>
     </div>
@@ -69,25 +73,37 @@ import { AuthService } from './auth.service';
     `
   ]
 })
+
 export class AppComponent {
+
   email?: string;
 
-  constructor(private authService: AuthService, private cookieService: CookieService) {  }
+  constructor(
+    private authService: AuthService,
+    private cookieService: CookieService
+  ) {}
 
   ngOnInit() {
     this.authService.getAuthState().subscribe((isAuth) => {
+
       if (isAuth) {
         this.email = this.cookieService.get('session_user');
       }
+
     });
   }
 
   signout() {
+
     this.authService.signout();
+
     this.authService.getAuthState().subscribe((isAuth) => {
+
       if (!isAuth) {
         this.email = undefined;
       }
+
     });
   }
+
 }
